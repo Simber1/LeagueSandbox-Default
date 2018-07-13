@@ -49,9 +49,9 @@ namespace Spells
         {
             if (target is Champion && target.IsDead)
             {
-                qCd = owner.getCooldown(0) * 0.7f;
-                wCd = owner.getCooldown(1) * 0.7f;
-                eCd = owner.getCooldown(2) * 0.7f;
+                float qCd = owner.GetSpellByName("MasteryiQ").getCooldown() * 0.7f;
+                float wCd = owner.GetSpellByName("MasteryiQ").getCooldown() * 0.7f;
+                float eCd = owner.GetSpellByName("MasteryiQ").getCooldown() * 0.7f;
                 owner.GetSpellByName("MasteryiQ").LowerCooldown(0, qCd);
                 owner.GetSpellByName("MasteryiW").LowerCooldown(1, wCd);
                 owner.GetSpellByName("MasteryiE").LowerCooldown(2, eCd);
