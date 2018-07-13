@@ -16,8 +16,22 @@ namespace Spells
             _owningChampion = owner;
             ApiFunctionManager.LogInfo("MasterYi's Passive OnActivate");
             ApiEventManager.OnHitUnit.AddListener(this, owner, OnAutoAttack);
+            ApiEventManager.OnDealDamage.AddListener(this, owner, champ => OnUnitDamageDealt(owner, champ));
         }
-    
+        
+        private void OnUnitDamageDealt(Champion owner, AttackableUnit target)
+		{
+			if (target is Champion && target.IsDead && owner.GetStats().Level > 5)
+			{
+
+				float qCd = owner.GetSpellByName("AlphaStrike").getCooldown() * 0.7f;
+				float wCd = owner.GetSpellByName("Meditate").getCooldown() * 0.7f;
+				//float eCd = owner.GetSpellByName("MasterYiE").getCooldown() * 0.7f;
+				owner.GetSpellByName("AlphaStrike").LowerCooldown(0, qCd);
+				owner.GetSpellByName("Meditate").LowerCooldown(1, wCd);
+				//owner.GetSpellByName("MasterYiE").LowerCooldown(2, eCd);
+			}
+		}
 
         public void OnDeactivate(Champion owner)
         {
