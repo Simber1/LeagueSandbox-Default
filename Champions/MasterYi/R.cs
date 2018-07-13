@@ -44,5 +44,15 @@ namespace Spells
         public void OnUpdate(double diff)
         {
         }
+        
+                private void OnUnitDamageDealt(Champion owner, AttackableUnit target)
+        {
+            if (target is Champion && target.IsDead)
+            {
+                owner.GetSpellByName("MasteryiQ").LowerCooldown(0, 0);
+                owner.GetSpellByName("MasteryiW").LowerCooldown(1, 0);
+                owner.GetSpellByName("MasteryiE").LowerCooldown(2, 0);
+            }
+        }
     }
 }
