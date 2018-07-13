@@ -49,9 +49,12 @@ namespace Spells
         {
             if (target is Champion && target.IsDead)
             {
-                owner.GetSpellByName("MasteryiQ").LowerCooldown(0, 0);
-                owner.GetSpellByName("MasteryiW").LowerCooldown(1, 0);
-                owner.GetSpellByName("MasteryiE").LowerCooldown(2, 0);
+                qCd = owner.getCooldown(0) * 0.7f;
+                wCd = owner.getCooldown(1) * 0.7f;
+                eCd = owner.getCooldown(2) * 0.7f;
+                owner.GetSpellByName("MasteryiQ").LowerCooldown(0, qCd);
+                owner.GetSpellByName("MasteryiW").LowerCooldown(1, wCd);
+                owner.GetSpellByName("MasteryiE").LowerCooldown(2, eCd);
             }
         }
     }
