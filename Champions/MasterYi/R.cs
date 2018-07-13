@@ -44,18 +44,6 @@ namespace Spells
         public void OnUpdate(double diff)
         {
         }
-        
-                private void OnUnitDamageDealt(Champion owner, AttackableUnit target)
-        {
-            if (target is Champion && target.IsDead)
-            {
-                float qCd = owner.GetSpellByName("MasteryiQ").getCooldown() * 0.7f;
-                float wCd = owner.GetSpellByName("MasteryiQ").getCooldown() * 0.7f;
-                float eCd = owner.GetSpellByName("MasteryiQ").getCooldown() * 0.7f;
-                owner.GetSpellByName("MasteryiQ").LowerCooldown(0, qCd);
-                owner.GetSpellByName("MasteryiW").LowerCooldown(1, wCd);
-                owner.GetSpellByName("MasteryiE").LowerCooldown(2, eCd);
-            }
-        }
+       
     }
 }
