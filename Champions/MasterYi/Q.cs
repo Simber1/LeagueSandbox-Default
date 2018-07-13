@@ -58,7 +58,7 @@ namespace Spells
                 if (enemyTarget != owner && !ApiFunctionManager.UnitIsTurret(enemyTarget) && ApiFunctionManager.UnitIsChampion(enemyTarget))
                 {
                     float baseDamage = new[] { 25, 60, 95, 130, 165 }[spell.Level - 1] + owner.GetStats().AttackDamage.Total * 1f + owner.GetStats().AbilityPower.Total * 0.7f;
-                    Boolean isCrit = new Random().Next(0, 100) < owner.GetStats().CriticalChance.Total;
+                    Boolean isCrit = new Random().Next(0, 100) < owner.GetStats().CriticalChance.Total*100;
                     float damage = isCrit ? baseDamage * 1.6f : baseDamage;
                     enemyTarget.TakeDamage(owner, damage, DamageType.DAMAGE_TYPE_PHYSICAL, DamageSource.DAMAGE_SOURCE_SPELL, isCrit);
 
@@ -66,7 +66,7 @@ namespace Spells
                 else if (ApiFunctionManager.UnitIsMinion(enemyTarget))
                 {
                     float baseDamage = new[] { 75, 100, 125, 150, 175 }[spell.Level - 1] + owner.GetStats().AttackDamage.Total * 1f + owner.GetStats().AbilityPower.Total * 0.7f;
-                    Boolean isCrit = new Random().Next(0, 100) < owner.GetStats().CriticalChance.Total;
+                    Boolean isCrit = new Random().Next(0, 100) < owner.GetStats().CriticalChance.Total*100;
                     float damage = isCrit ? baseDamage * 1.6f : baseDamage;
                     enemyTarget.TakeDamage(owner, damage, DamageType.DAMAGE_TYPE_PHYSICAL, DamageSource.DAMAGE_SOURCE_SPELL, isCrit);
                 }
